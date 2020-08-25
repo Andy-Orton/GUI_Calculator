@@ -4,9 +4,9 @@ namespace CalculatorBase
 {
     public class CalcLogic
     {
-        public int Add(int a, int b)
+        public double DifferenceOfDates(DateTime a, DateTime b)
         {
-            return a + b;
+            return Math.Abs((a-b).TotalDays);
         }
     }
 }
