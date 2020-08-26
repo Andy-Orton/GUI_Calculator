@@ -6,7 +6,7 @@ namespace CalculatorBase
     {
         public double DifferenceOfDates(DateTime a, DateTime b)
         {
-            return Math.Abs((a-b).TotalDays);
+            return Math.Round(Math.Abs((a-b).TotalDays));
         }
     }
 }
