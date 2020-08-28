@@ -37,7 +37,7 @@ namespace CalculatorWinForms
 
         private void firstDatePicker_ValueChanged(object sender, EventArgs e)
         {
-            
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
