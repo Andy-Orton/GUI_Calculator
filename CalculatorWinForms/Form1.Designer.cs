@@ -40,10 +40,13 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.First_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Second_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Days_Between = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // DateCalculatorLbl
@@ -149,6 +152,20 @@
             // 
             // tabPage2
             // 
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.First_Date,
+            this.Second_Date,
+            this.Days_Between});
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(826, 553);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.Text = "dataGridView1";
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.tabPage2.Controls.Add(this.dataGridView1);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
@@ -158,15 +175,21 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // First_Date
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(386, 304);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.Text = "dataGridView1";
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.First_Date.HeaderText = "First Date";
+            this.First_Date.Name = "First_Date";
+            this.First_Date.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Second_Date
+            // 
+            this.Second_Date.HeaderText = "Second Date";
+            this.Second_Date.Name = "Second_Date";
+            // 
+            // Days_Between
+            // 
+            this.Days_Between.HeaderText = "Days Between";
+            this.Days_Between.Name = "Days_Between";
             // 
             // Date
             // 
@@ -179,8 +202,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -199,6 +222,9 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn First_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Second_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Days_Between;
     }
 }
 

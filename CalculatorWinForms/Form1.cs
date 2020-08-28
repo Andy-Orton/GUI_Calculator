@@ -54,7 +54,7 @@ namespace CalculatorWinForms
             {
                 dayLabel.Text = "Days";
             }
-
+            dataGridView1.Rows.Add(firstDateTime, secondDateTime, days);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
