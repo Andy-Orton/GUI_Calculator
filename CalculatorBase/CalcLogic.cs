@@ -4,9 +4,19 @@ namespace CalculatorBase
 {
     public class CalcLogic
     {
-        public double DifferenceOfDates(DateTime a, DateTime b)
+        public double DifferenceOfDatesInDays(DateTime a, DateTime b)
         {
             return Math.Round(Math.Abs((a-b).TotalDays));
+        }
+
+        public double DifferenceOfDatesInMonths(DateTime a, DateTime b)
+        {
+            return (Math.Abs((a-b).TotalDays/(365.12/12)));
+        }
+
+        public double DifferenceOfDatesInYears(DateTime a, DateTime b)
+        {
+            return (Math.Abs((a - b).TotalDays / 365));
         }
     }
 }

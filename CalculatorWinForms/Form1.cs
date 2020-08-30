@@ -40,11 +40,11 @@ namespace CalculatorWinForms
            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void calculateDifference(object sender, EventArgs e)
         {
             DateTime firstDateTime = firstDatePicker.Value;
             DateTime secondDateTime = secondDatePicker.Value;
-            var days = Calc.DifferenceOfDates(firstDateTime, secondDateTime);
+            var days = Calc.DifferenceOfDatesInDays(firstDateTime, secondDateTime);
             difference.Text = days.ToString();
             if(days < 2.0)
             {
