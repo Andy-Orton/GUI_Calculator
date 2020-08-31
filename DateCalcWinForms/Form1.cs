@@ -25,13 +25,7 @@ namespace DateCalcWinForms
         private void CalculateButtonClicked(object sender, EventArgs e)
         {
             String unitSelected = UnitSelector.Text;
-            if (unitSelected == "")
-            {
-                Debug.Write("Hello There");
-                ErrorLabel.Text = "Please select the unit you'd like your answer in";
-                return;
-            }
-            else if (unitSelected == "Days")
+            if (unitSelected == "Days")
             {
                 var difference = dateCalculator.DifferenceOfDatesInDays(DatePicker1.Value, DatePicker2.Value);
                 OutputLabel.Text = difference.ToString() + " Days";
@@ -48,6 +42,11 @@ namespace DateCalcWinForms
                 var difference = dateCalculator.DifferenceOfDatesInYears(DatePicker1.Value, DatePicker2.Value);
                 OutputLabel.Text = difference.ToString() + " Years";
                 HistoryTable.Rows.Add(DateTime.Now.ToString("H:mm:ss"), DatePicker1.Value.ToString("MMMM dd, yyyy"), DatePicker2.Value.ToString("MMMM dd, yyyy"), difference, "Years");
+            }
+            else 
+            {
+                ErrorLabel.Text = "Please select a valid unit you'd like your answer in";
+                return;
             }
         }
     }
