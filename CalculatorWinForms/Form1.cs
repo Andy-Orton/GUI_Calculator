@@ -13,7 +13,7 @@ namespace CalculatorWinForms
 {
     public partial class Date : Form
     {
-        public CalcLogic Calc { get; set; }
+        
         public Date()
         {
             InitializeComponent();
@@ -66,5 +66,6 @@ namespace CalculatorWinForms
         {
 
         }
+        public CalcLogic Calc { get; set; }
     }
 }
