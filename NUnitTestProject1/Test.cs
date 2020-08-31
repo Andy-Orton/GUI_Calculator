@@ -48,7 +48,7 @@ namespace NUnitTestProject1
         {
             DateTime dateTime = new DateTime(2000, 1, 1);
             DateTime dateTime1 = new DateTime(2001, 1, 1);
-            Assert.AreEqual(1, calc.DifferenceOfDatesInYears(dateTime, dateTime1));
+            Assert.AreEqual(1, calc.DifferenceOfDatesInYears(dateTime, dateTime1), 0.01);
         }
 
         [Test]

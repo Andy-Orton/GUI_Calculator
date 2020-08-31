@@ -11,12 +11,12 @@ namespace CalculatorBase
 
         public double DifferenceOfDatesInMonths(DateTime a, DateTime b)
         {
-            return (Math.Abs((a-b).TotalDays/(365.12/12)));
+            return Math.Round((Math.Abs((a-b).TotalDays/(365.12/12))), 3);
         }
 
         public double DifferenceOfDatesInYears(DateTime a, DateTime b)
         {
-            return (Math.Abs((a - b).TotalDays / 365));
+            return Math.Round((Math.Abs((a - b).TotalDays / 365)), 3);
         }
     }
 }
