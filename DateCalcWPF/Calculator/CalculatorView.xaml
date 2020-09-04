@@ -49,12 +49,19 @@
                  Grid.Column="1"
                  MaxLength="2"
                  Margin="3"></TextBox>
-        <TextBox x:Name="firstMonthInput"
+        <!--<TextBox x:Name="firstMonthInput"
                  Text= "{Binding firstMonth}"
                  Grid.Row="1"
                  Grid.Column="2"
                  MaxLength="2"
-                 Margin="3"></TextBox>
+                 Margin="3"></TextBox>-->
+        <ComboBox SelectedIndex="{Binding firstSelectedMonth}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Months}"></TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <TextBox x:Name="firstYearInput"
                  Grid.Row="1"
                  Text="{Binding firstYear}"
@@ -81,7 +88,7 @@
                  Margin="3"></TextBox>
         <!--Buttons and Total-->
         <Button Content="Calculate" Grid.Row="3" Grid.Column="0" MaxWidth="75" Command="{Binding CalculateCommand}"></Button>
-        <TextBlock Text="{Binding totalDiff}"
+        <TextBlock Text="{Binding TotalDiff}"
                    Grid.Row="3"
                    Grid.Column="1"></TextBlock>
     </Grid>
