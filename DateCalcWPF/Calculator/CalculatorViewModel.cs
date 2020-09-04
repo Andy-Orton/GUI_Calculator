@@ -9,6 +9,7 @@ using System.Diagnostics;
 using Prism.Mvvm;
 using System.Windows;
 using CalculatorBase;
+using Microsoft.Win32;
 
 namespace DateCalcWPF.Calculator
 {
@@ -19,7 +20,7 @@ namespace DateCalcWPF.Calculator
             //calculateCommand = new CalculateCommand(OnCalculate);
             firstDay = secondDay = 1;
             firstYear = secondYear = 2020;
-            
+
         }
 
 
@@ -41,7 +42,7 @@ namespace DateCalcWPF.Calculator
         {
             get => months;
         }
-        
+
         private readonly List<string> months = new List<string>()
         {   "January",
             "February",
@@ -64,8 +65,8 @@ namespace DateCalcWPF.Calculator
             DateTime secondDateTime = DateTime.Now;
             try
             {
-                firstDateTime = new DateTime(firstYear, firstSelectedMonth+1, firstDay);
-                secondDateTime = new DateTime(secondYear, secondSelectedMonth+1, secondDay);
+                firstDateTime = new DateTime(firstYear, firstSelectedMonth + 1, firstDay);
+                secondDateTime = new DateTime(secondYear, secondSelectedMonth + 1, secondDay);
             }
             catch (ArgumentOutOfRangeException e)
             {
@@ -74,11 +75,11 @@ namespace DateCalcWPF.Calculator
                 return;
             }
             CalcLogic calc = new CalcLogic();
-            if(UnitChoice == null)
+            if (UnitChoice == null)
             {
                 return;
             }
-            else if(UnitChoice.Contains("Days"))
+            else if (UnitChoice.Contains("Days"))
             {
                 TotalDiff = calc.DifferenceOfDatesInDays(firstDateTime, secondDateTime).ToString() + " days";
             }
@@ -86,12 +87,20 @@ namespace DateCalcWPF.Calculator
             {
                 TotalDiff = calc.DifferenceOfDatesInMonths(firstDateTime, secondDateTime).ToString() + " Months";
             }
-            else if(UnitChoice.Contains("Years"))
+            else if (UnitChoice.Contains("Years"))
             {
                 TotalDiff = calc.DifferenceOfDatesInYears(firstDateTime, secondDateTime).ToString() + " Years";
             }
         }));
 
-        
+        private DelegateCommand fileFinder;
+        public DelegateCommand FileFinder => fileFinder ?? (fileFinder = new DelegateCommand(async () =>
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            if (openFile.ShowDialog() == true)
+            {
+
+            }
+        }));
     }
 }

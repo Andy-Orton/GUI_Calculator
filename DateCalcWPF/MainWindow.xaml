@@ -10,45 +10,10 @@
         <TextBlock Text="Date Calculator" ></TextBlock>
         <TabControl>
             <TabItem Name="Calculator" Header="Calculator">
-                <Calculator:CalculatorView/>
-                <!--<Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    --><!--Setting Grid Column Labels--><!--
-                    <Label Content="Day" Grid.Row="0" Grid.Column="1"></Label>
-                    <Label Content="Month" Grid.Row="0" Grid.Column="2"></Label>
-                    <Label Content="Year" Grid.Row="0" Grid.Column="3"></Label>
-                    --><!--Setting Grid Row Labels--><!--
-                    <Label Content="First Date" Grid.Row="1" Grid.Column="0"></Label>
-                    <Label Content="Second Date" Grid.Row="2" Grid.Column="0"></Label>
-                    
-                    --><!--Setting Inputs--><!--
-                    <TextBox x:Name="firstDayInput" Grid.Row="1" Grid.Column="1" MaxLength="2" Margin="3"></TextBox>
-                    <TextBox x:Name="firstMonthInput" Grid.Row="1" Grid.Column="2" MaxLength="2" Margin="3"></TextBox>
-                    <TextBox x:Name="firstYearInput" Grid.Row="1" Grid.Column="3" MaxLength="4" Margin="3"></TextBox>
-                    <TextBox x:Name="secondDayInput" Grid.Row="2" Grid.Column="1" MaxLength="2" Margin="3"></TextBox>
-                    <TextBox x:Name="secondMonthInput" Grid.Row="2" Grid.Column="2" MaxLength="2" Margin="3"></TextBox>
-                    <TextBox x:Name="secondYearInput" Grid.Row="2" Grid.Column="3" MaxLength="4" Margin="3"></TextBox>
-                    --><!--Buttons and Total--><!--
-                    <Button Content="Calculate" Grid.Row="3" Grid.Column="0" MaxWidth="75" Command="{Binding Calculate}"></Button>
-                    
-                </Grid>-->
-
+                <Calculator:CalculatorView />
             </TabItem>
             <TabItem Name="History" Header="History">
-
+                
             </TabItem>
         </TabControl>
     </StackPanel>

@@ -95,6 +95,16 @@
         <TextBlock Text="{Binding TotalDiff}"
                    Grid.Row="3"
                    Grid.Column="3"></TextBlock>
+        <!--Excel Implementation-->
+        
+        <Button Content="Open File Finder"
+                Grid.Row="4"
+                Grid.Column="1"
+                Command="{Binding FileFinder}"></Button>
+        <Button Content="Read in file and calculate"
+                Grid.Row="4"
+                Grid.Column="2"
+                Command="{Binding FileCalculate}"></Button>
     </Grid>
 
 </UserControl>
