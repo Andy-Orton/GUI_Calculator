@@ -12,9 +12,9 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="200" ></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -48,19 +48,13 @@
                  Grid.Row="1"
                  Grid.Column="1"
                  MaxLength="2"
-                 Margin="3"></TextBox>
-        <!--<TextBox x:Name="firstMonthInput"
-                 Text= "{Binding firstMonth}"
-                 Grid.Row="1"
-                 Grid.Column="2"
-                 MaxLength="2"
-                 Margin="3"></TextBox>-->
-        <ComboBox SelectedIndex="{Binding firstSelectedMonth}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Months}"></TextBlock>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
+                 Margin="3"
+                 ></TextBox>
+        <ComboBox SelectedIndex="{Binding firstSelectedMonth}"
+                  ItemsSource="{Binding Months}"
+                  Grid.Column="2"
+                  Grid.Row="1"
+                  IsEditable="False">
         </ComboBox>
         <TextBox x:Name="firstYearInput"
                  Grid.Row="1"
@@ -74,12 +68,12 @@
                  Grid.Column="1"
                  MaxLength="2"
                  Margin="3"></TextBox>
-        <TextBox x:Name="secondMonthInput"
-                 Grid.Row="2"
-                 Text="{Binding secondMonth}"
-                 Grid.Column="2"
-                 MaxLength="2"
-                 Margin="3"></TextBox>
+        <ComboBox SelectedIndex="{Binding secondSelectedMonth}"
+                  ItemsSource="{Binding Months}"
+                  Grid.Column="2"
+                  Grid.Row="2"
+                  IsEditable="False">
+        </ComboBox>
         <TextBox x:Name="secondYearInput"
                  Grid.Row="2"
                  Text="{Binding secondYear}"
@@ -87,10 +81,20 @@
                  MaxLength="4"
                  Margin="3"></TextBox>
         <!--Buttons and Total-->
-        <Button Content="Calculate" Grid.Row="3" Grid.Column="0" MaxWidth="75" Command="{Binding CalculateCommand}"></Button>
+        <Label Content="Choose your units"
+               Grid.Column="0"
+               Grid.Row="3"></Label>        
+        <ComboBox SelectedItem="{Binding UnitChoice}"
+                  Grid.Column="1"
+                  Grid.Row="3">
+            <ComboBoxItem>Years</ComboBoxItem>
+            <ComboBoxItem>Months</ComboBoxItem>
+            <ComboBoxItem>Days</ComboBoxItem>
+        </ComboBox>
+        <Button Content="Calculate" Grid.Row="3" Grid.Column="2" MaxWidth="75" Command="{Binding CalculateCommand}"></Button>
         <TextBlock Text="{Binding TotalDiff}"
                    Grid.Row="3"
-                   Grid.Column="1"></TextBlock>
+                   Grid.Column="3"></TextBlock>
     </Grid>
 
 </UserControl>
