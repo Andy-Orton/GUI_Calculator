@@ -5,6 +5,8 @@ using System.Data;
 using System.Text;
 using System.Windows.Input;
 using Prism.Commands;
+using System.ComponentModel;
+using System.Diagnostics;
 
 namespace DateCalcWPF.Calculator
 {
@@ -15,7 +17,7 @@ namespace DateCalcWPF.Calculator
             //calculateCommand = new CalculateCommand(OnCalculate);
         }
 
-        
+
         
         public string totalDiff { get; set; }
 
@@ -29,7 +31,7 @@ namespace DateCalcWPF.Calculator
         private DelegateCommand calculateCommand;
         public DelegateCommand CalculateCommand => calculateCommand ?? (calculateCommand = new DelegateCommand(async () =>
         {
-            totalDiff = "These Nuts";
+            totalDiff = "SAMPLE";
         }));
     }
 }
