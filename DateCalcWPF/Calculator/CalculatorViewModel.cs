@@ -10,11 +10,13 @@ using Prism.Mvvm;
 using System.Windows;
 using CalculatorBase;
 using Microsoft.Win32;
+using DateCalcWPF.Model;
 
 namespace DateCalcWPF.Calculator
 {
     public class CalculatorViewModel : BindableBase
     {
+
         public CalculatorViewModel()
         {
             //calculateCommand = new CalculateCommand(OnCalculate);
@@ -23,6 +25,13 @@ namespace DateCalcWPF.Calculator
 
         }
 
+
+        private string fileName;
+        public string FileName
+        {
+            get => fileName;
+            set { SetProperty(ref fileName, value); }
+        }
 
         private string totalDiff;
         public string TotalDiff
@@ -58,7 +67,7 @@ namespace DateCalcWPF.Calculator
             "December"};
 
         private DelegateCommand calculateCommand;
-        public DelegateCommand CalculateCommand => calculateCommand ?? (calculateCommand = new DelegateCommand(async () =>
+        public DelegateCommand CalculateCommand => calculateCommand ?? (calculateCommand = new DelegateCommand(() =>
         {
             //giving basic initializations
             DateTime firstDateTime = DateTime.Now;
@@ -91,16 +100,32 @@ namespace DateCalcWPF.Calculator
             {
                 TotalDiff = calc.DifferenceOfDatesInYears(firstDateTime, secondDateTime).ToString() + " Years";
             }
+
         }));
 
         private DelegateCommand fileFinder;
-        public DelegateCommand FileFinder => fileFinder ?? (fileFinder = new DelegateCommand(async () =>
+        public DelegateCommand FileFinder => fileFinder ?? (fileFinder = new DelegateCommand(() =>
         {
             OpenFileDialog openFile = new OpenFileDialog();
             if (openFile.ShowDialog() == true)
             {
-
+                FileName = openFile.FileName;
             }
+        }));
+
+        private DelegateCommand fileCalculate;
+        public DelegateCommand FileCalculate => fileCalculate ?? (fileCalculate = new DelegateCommand(() =>
+        {
+            if(FileName == null)
+            {
+                return;
+            }
+        }));
+
+        private DelegateCommand goToHistory;
+        public DelegateCommand GoToHistory => goToHistory ?? (goToHistory = new DelegateCommand(() =>
+        {
+            
         }));
     }
 }

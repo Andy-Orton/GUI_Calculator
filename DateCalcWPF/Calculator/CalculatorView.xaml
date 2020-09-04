@@ -23,6 +23,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <!--Setting Grid Column Labels-->
         <Label Content="Day"
@@ -96,15 +97,25 @@
                    Grid.Row="3"
                    Grid.Column="3"></TextBlock>
         <!--Excel Implementation-->
-        
-        <Button Content="Open File Finder"
+        <TextBlock Text="Excel Input"
+                   Grid.Column="0"
+                   Grid.Row="4"></TextBlock>
+        <TextBlock Text="{Binding FileName}"
+                   Grid.Column="1"
+                   Grid.Row="4"></TextBlock>
+        <Button Content="Browse"
                 Grid.Row="4"
-                Grid.Column="1"
+                Grid.Column="2"
                 Command="{Binding FileFinder}"></Button>
         <Button Content="Read in file and calculate"
                 Grid.Row="4"
-                Grid.Column="2"
+                Grid.Column="3"
                 Command="{Binding FileCalculate}"></Button>
+        <!--GotoHistoryPage-->
+        <Button Content="View History"
+                Grid.Row="5"
+                Grid.Column="0"
+                Command="{Binding GoToHistory}"></Button>
     </Grid>
 
 </UserControl>

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,22 +11,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DateCalcWPF
+namespace DateCalcWPF.History
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for HistoryView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class HistoryView : UserControl
     {
-        public MainWindow()
+        public HistoryView()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel();
         }
-        public void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
     }
 }

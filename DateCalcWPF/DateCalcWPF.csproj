@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="History\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
   </ItemGroup>
 
