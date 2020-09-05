@@ -11,7 +11,7 @@
     <StackPanel>
         <TextBlock Text="{Binding Title}" ></TextBlock>
         <TabControl >
-            <TabItem Name="Calculator">
+            <TabItem Name="Calculator" Header="Calculator">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -123,6 +123,21 @@
                             Grid.Column="0"
                             Command="{Binding GoToHistory}"></Button>
                 </Grid>
+            </TabItem>
+            <TabItem Name="History"
+                     Header="History">
+                <DataGrid ItemsSource="{Binding CalculatorInputs}"
+                          Height="Auto"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="First Date" Binding="{Binding firstDateTime}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Second Date"
+                                            Binding ="{Binding secondDateTime}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Output"
+                                            Binding="{Binding output}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Units" Binding="{Binding units}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
             </TabItem>
         </TabControl>
     </StackPanel>

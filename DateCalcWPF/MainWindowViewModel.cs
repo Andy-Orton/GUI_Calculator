@@ -5,7 +5,9 @@ using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 
@@ -13,11 +15,20 @@ namespace DateCalcWPF
 {
     public class MainWindowViewModel : BindableBase
     {
+       
         public MainWindowViewModel()
         {
             Title = "Date Calculator";
             firstDay = secondDay = 1;
             firstYear = secondYear = 2020;
+            CalculatorInputs = new ObservableCollection<CalculatorInput>();
+        }
+
+        private ObservableCollection<CalculatorInput> calculatorInputs;
+        public ObservableCollection<CalculatorInput> CalculatorInputs
+        {
+            get => calculatorInputs;
+            set { SetProperty(ref calculatorInputs, value); }
         }
 
         private string title;
@@ -92,15 +103,23 @@ namespace DateCalcWPF
             }
             else if (UnitChoice.Contains("Days"))
             {
-                TotalDiff = calc.DifferenceOfDatesInDays(firstDateTime, secondDateTime).ToString() + " days";
+                var difference = calc.DifferenceOfDatesInDays(firstDateTime, secondDateTime);
+                TotalDiff = difference.ToString() + " days";
+                calculatorInputs.Add(new CalculatorInput(firstDateTime.ToString(), secondDateTime.ToString(), "Days", difference));
             }
             else if (UnitChoice.Contains("Months"))
             {
-                TotalDiff = calc.DifferenceOfDatesInMonths(firstDateTime, secondDateTime).ToString() + " Months";
+                var difference = calc.DifferenceOfDatesInMonths(firstDateTime, secondDateTime);
+                TotalDiff = difference.ToString() + " months";
+                var firstString = firstDateTime.ToString();
+                var secondString = secondDateTime.ToString();
+                calculatorInputs.Add(new CalculatorInput(firstString, secondString, "Months", difference));
             }
             else if (UnitChoice.Contains("Years"))
             {
-                TotalDiff = calc.DifferenceOfDatesInYears(firstDateTime, secondDateTime).ToString() + " Years";
+                var difference = calc.DifferenceOfDatesInYears(firstDateTime, secondDateTime);
+                TotalDiff = difference.ToString() + " years";
+                calculatorInputs.Add(new CalculatorInput(firstDateTime.ToString(), secondDateTime.ToString(), "Years", difference));
             }
 
         }));
@@ -124,11 +143,7 @@ namespace DateCalcWPF
             }
         }));
 
-        private DelegateCommand goToHistory;
-        public DelegateCommand GoToHistory => goToHistory ?? (goToHistory = new DelegateCommand(() =>
-        {
-
-        }));
+        
     }
 }
 
