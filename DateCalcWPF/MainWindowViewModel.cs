@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Windows;
 
@@ -15,17 +16,20 @@ namespace DateCalcWPF
 {
     public class MainWindowViewModel : BindableBase
     {
-       
+
         public MainWindowViewModel()
         {
             Title = "Date Calculator";
             firstDay = secondDay = 1;
             firstYear = secondYear = 2020;
-            CalculatorInputs = new ObservableCollection<CalculatorInput>();
+            CalculatorInputs = new ObservableCollection<CalculatorHistory>();
+            fileHandler = new FileHandler();
         }
 
-        private ObservableCollection<CalculatorInput> calculatorInputs;
-        public ObservableCollection<CalculatorInput> CalculatorInputs
+        public IFileHandler fileHandler { get; set; }
+
+        private ObservableCollection<CalculatorHistory> calculatorInputs;
+        public ObservableCollection<CalculatorHistory> CalculatorInputs
         {
             get => calculatorInputs;
             set { SetProperty(ref calculatorInputs, value); }
@@ -105,7 +109,7 @@ namespace DateCalcWPF
             {
                 var difference = calc.DifferenceOfDatesInDays(firstDateTime, secondDateTime);
                 TotalDiff = difference.ToString() + " days";
-                calculatorInputs.Add(new CalculatorInput(firstDateTime.ToString(), secondDateTime.ToString(), "Days", difference));
+                calculatorInputs.Add(new CalculatorHistory(firstDateTime.ToString(), secondDateTime.ToString(), "Days", difference));
             }
             else if (UnitChoice.Contains("Months"))
             {
@@ -113,13 +117,13 @@ namespace DateCalcWPF
                 TotalDiff = difference.ToString() + " months";
                 var firstString = firstDateTime.ToString();
                 var secondString = secondDateTime.ToString();
-                calculatorInputs.Add(new CalculatorInput(firstString, secondString, "Months", difference));
+                calculatorInputs.Add(new CalculatorHistory(firstString, secondString, "Months", difference));
             }
             else if (UnitChoice.Contains("Years"))
             {
                 var difference = calc.DifferenceOfDatesInYears(firstDateTime, secondDateTime);
                 TotalDiff = difference.ToString() + " years";
-                calculatorInputs.Add(new CalculatorInput(firstDateTime.ToString(), secondDateTime.ToString(), "Years", difference));
+                calculatorInputs.Add(new CalculatorHistory(firstDateTime.ToString(), secondDateTime.ToString(), "Years", difference));
             }
 
         }));
@@ -141,9 +145,44 @@ namespace DateCalcWPF
             {
                 return;
             }
+            List<CalculatorInput> calculatorHistory = fileHandler.ReadFromExcel(FileName).ToList();
+            if (calculatorHistory == null)
+            {
+                return;
+            }
+            CalcLogic calc = new CalcLogic();
+            foreach (CalculatorInput x in calculatorHistory)
+            {
+                if (x.units == null)
+                {
+                    return;
+                }
+                else if (x.units.Contains("Days"))
+                {
+                    var difference = calc.DifferenceOfDatesInDays(x.firstDateTime, x.secondDateTime);
+                    calculatorInputs.Add(new CalculatorHistory(x.firstDateTime.ToString(), x.secondDateTime.ToString(), x.units, difference));
+                }
+                else if (x.units.Contains("Months"))
+                {
+                    var difference = calc.DifferenceOfDatesInMonths(x.firstDateTime, x.secondDateTime);
+                    var firstString = x.firstDateTime.ToString();
+                    var secondString = x.secondDateTime.ToString();
+                    calculatorInputs.Add(new CalculatorHistory(firstString, secondString, "Months", difference));
+                }
+                else if (x.units.Contains("Years"))
+                {
+                    var difference = calc.DifferenceOfDatesInYears(x.firstDateTime, x.secondDateTime);
+                    TotalDiff = difference.ToString() + " years";
+                    calculatorInputs.Add(new CalculatorHistory(x.firstDateTime.ToString(), x.secondDateTime.ToString(), "Years", difference));
+                }
+            }
         }));
 
-        
+        private DelegateCommand saveToExcel;
+        public DelegateCommand SaveToExcel => saveToExcel ?? (saveToExcel = new DelegateCommand(() =>
+        {
+            fileHandler.PostToExcel(CalculatorInputs);
+        }));
     }
 }
 

@@ -117,27 +117,30 @@
                             Grid.Row="4"
                             Grid.Column="3"
                             Command="{Binding FileCalculate}"></Button>
-                    <!--GotoHistoryPage-->
-                    <Button Content="View History"
-                            Grid.Row="5"
-                            Grid.Column="0"
-                            Command="{Binding GoToHistory}"></Button>
                 </Grid>
             </TabItem>
             <TabItem Name="History"
                      Header="History">
-                <DataGrid ItemsSource="{Binding CalculatorInputs}"
-                          Height="Auto"
-                          AutoGenerateColumns="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="First Date" Binding="{Binding firstDateTime}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Second Date"
-                                            Binding ="{Binding secondDateTime}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Output"
-                                            Binding="{Binding output}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Units" Binding="{Binding units}"></DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <StackPanel>
+                    <DataGrid ItemsSource="{Binding CalculatorInputs}"
+                              Height="Auto"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="First Date"
+                                                Binding="{Binding firstDateTime}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Second Date"
+                                                Binding="{Binding secondDateTime}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Output"
+                                                Binding="{Binding output}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Units"
+                                                Binding="{Binding units}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Save to Excel File"
+                            Command="{Binding SaveToExcel}"
+                            MaxWidth="400"></Button>
+                </StackPanel>
+                
             </TabItem>
         </TabControl>
     </StackPanel>
