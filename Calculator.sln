@@ -11,13 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DateCalcWinForms", "DateCal
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DateCalcWPF", "DateCalcWPF\DateCalcWPF.csproj", "{0AD48397-8A15-432A-AE85-E54618FDA509}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateCalcWPF.Tests", "DateCalcWPF.Tests\DateCalcWPF.Tests.csproj", "{70EEBC3C-84EC-4CC6-9808-3179E4D1ACE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DateCalcWPF.Tests", "DateCalcWPF.Tests\DateCalcWPF.Tests.csproj", "{70EEBC3C-84EC-4CC6-9808-3179E4D1ACE4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C837F5A4-9975-483B-8ACC-281870CD09E4}"
 	ProjectSection(SolutionItems) = preProject
 		SampleInput.xlsx = SampleInput.xlsx
 		TestSpreadsheet.xlsx = TestSpreadsheet.xlsx
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateCalcBlazorWasm", "DateCalcBlazorWasm\DateCalcBlazorWasm.csproj", "{22377EFF-2F1B-4604-8235-CA4141F7C2A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{70EEBC3C-84EC-4CC6-9808-3179E4D1ACE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70EEBC3C-84EC-4CC6-9808-3179E4D1ACE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70EEBC3C-84EC-4CC6-9808-3179E4D1ACE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22377EFF-2F1B-4604-8235-CA4141F7C2A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22377EFF-2F1B-4604-8235-CA4141F7C2A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22377EFF-2F1B-4604-8235-CA4141F7C2A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22377EFF-2F1B-4604-8235-CA4141F7C2A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

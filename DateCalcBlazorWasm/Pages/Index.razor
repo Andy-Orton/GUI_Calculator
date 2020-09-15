@@ -1,0 +1,33 @@
+﻿@page "/"
+
+<h1>Date Calculator</h1>
+<div>
+    <span>First Date: </span><input type="date" @bind="firstDate" /><br />
+    <span>Second Date: </span><input type="date" @bind="secondDate" /><br />
+    <span>Units(days, months, years):</span><input type="text" @bind="units" /><br />
+    <button @onclick ="calculate">CalculateDatDate</button>
+</div>
+
+<p style="font-size: xx-large">@results @units</p>
+
+
+@code{
+    private DateTime firstDate { get; set; }
+    private DateTime secondDate { get; set; }
+    private string units { get; set; }
+    private string results { get; set; }
+    public void calculate()
+    {
+        CalculatorBase.CalcLogic logic = new CalculatorBase.CalcLogic();
+        if(units == "days" || units == "Days")
+        {
+            results = logic.DifferenceOfDatesInDays(firstDate, secondDate).ToString();
+        } else if(units == "months" || units == "Months")
+        {
+            results = logic.DifferenceOfDatesInMonths(firstDate, secondDate).ToString();
+        } else if(units == "years" || units == "Years")
+        {
+            results = logic.DifferenceOfDatesInYears(firstDate, secondDate).ToString();
+        }
+    }
+}
